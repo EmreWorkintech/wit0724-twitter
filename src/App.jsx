@@ -14,37 +14,45 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
+  const [darkMode, setDarkMode] = useLocalStorage(
+    "darkMode",
+    window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? true
+      : false
+  );
 
   return (
     <div className={darkMode ? "dark" : null}>
-      <Switch>
-        <Route path="/" exact>
-          <Redirect to="/feed" />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <PrivateRoute path="/feed">
-          <div className="flex w-3/4 m-auto">
-            <LeftColumn />
-            <MainColumn />
-            <RightColumn setDarkMode={setDarkMode} darkMode={darkMode} />
-          </div>
-        </PrivateRoute>
-      </Switch>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <div className=" dark:bg-slate-700 dark:text-slate-100">
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/feed" />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <PrivateRoute path="/feed">
+            <div className="flex w-3/4 m-auto">
+              <LeftColumn />
+              <MainColumn />
+              <RightColumn setDarkMode={setDarkMode} darkMode={darkMode} />
+            </div>
+          </PrivateRoute>
+        </Switch>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </div>
     </div>
   );
 }
