@@ -1,7 +1,9 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { UserContext } from "../contexts/UserContext";
 
 function LoginForm() {
   const {
@@ -16,6 +18,7 @@ function LoginForm() {
     },
     mode: "onChange",
   });
+  const { logUserIn } = useContext(UserContext);
 
   const history = useHistory();
 
@@ -26,6 +29,7 @@ function LoginForm() {
         reset();
         toast.success(`${response.data.id} id'li kullanıcımız hoş geldiniz.`);
         console.log(response.data);
+        logUserIn(response.data);
         history.push("/feed");
       })
       .catch((error) => {
