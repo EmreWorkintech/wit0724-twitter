@@ -15,8 +15,10 @@ export default function UserContextProvider({ children }) {
     });
   }
 
+  const isLoggedIn = user ? true : false;
+
   return (
-    <UserContext.Provider value={{ user, logUserIn }}>
+    <UserContext.Provider value={{ user, logUserIn, isLoggedIn }}>
       {children}
     </UserContext.Provider>
   );

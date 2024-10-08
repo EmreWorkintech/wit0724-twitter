@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
@@ -24,13 +25,13 @@ function App() {
         <Route path="/login">
           <LoginPage />
         </Route>
-        <Route path="/feed">
+        <PrivateRoute path="/feed">
           <div className="flex w-3/4 m-auto">
             <LeftColumn />
             <MainColumn />
             <RightColumn setDarkMode={setDarkMode} darkMode={darkMode} />
           </div>
-        </Route>
+        </PrivateRoute>
       </Switch>
       <ToastContainer
         position="top-right"
