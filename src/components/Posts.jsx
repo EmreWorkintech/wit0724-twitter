@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { postData } from "../data";
-import axios from "axios";
 import PostItem from "./PostItem";
+import { useDispatch, useSelector } from "react-redux";
+import { setAllPosts } from "../store/actions/postActions";
 
 function Posts() {
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector((store) => store.posts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get("https://reqres.in/api/users").then(() => {
-      setPosts(postData);
-    });
+    dispatch(setAllPosts(postData));
   }, []);
 
   return (
