@@ -1,4 +1,8 @@
-import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom/cjs/react-router-dom.min";
 import "./App.css";
 import LeftColumn from "./layouts/LeftColumn";
 import MainColumn from "./layouts/MainColumn";
@@ -14,6 +18,9 @@ function App() {
   return (
     <div className={darkMode ? "dark" : null}>
       <Switch>
+        <Route path="/" exact>
+          <Redirect to="/feed" />
+        </Route>
         <Route path="/login">
           <LoginPage />
         </Route>
