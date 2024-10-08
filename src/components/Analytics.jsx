@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 function Analytics({ data }) {
   return (
-    <div className="flex justify-between mt-4 text-slate-500">
+    <div className="flex justify-between mt-4 text-slate-500 dark:text-slate-300">
       <span>
         <i className="fa-regular fa-message mr-4"></i>
         {data.comment}

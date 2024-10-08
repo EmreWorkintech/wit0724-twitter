@@ -12,8 +12,13 @@ function Feed() {
   };
   return (
     <div>
-      <h1>Home</h1>
-      <div onClick={handleClick}>Post burada</div>
+      <h1 className="p-8 text-2xl font-bold">Home</h1>
+      <div
+        onClick={handleClick}
+        className="border-solid border-y-2 border-gray-400 h-32"
+      >
+        Post burada
+      </div>
       <Posts />
     </div>
   );

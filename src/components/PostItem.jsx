@@ -18,7 +18,7 @@ function PostItem({ post }) {
       <div className="grow">
         <div>
           <span className="font-bold mr-2">{post.user.username}</span>
-          <span className="text-slate-500">
+          <span className="text-slate-500  dark:text-slate-300">
             {post.user.account} - {postTime}
           </span>
         </div>
