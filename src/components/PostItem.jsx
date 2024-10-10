@@ -1,9 +1,20 @@
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
 import Analytics from "./Analytics";
+import { useDeleteTweet } from "../services/mutations";
 
 /* eslint-disable react/prop-types */
 function PostItem({ post }) {
+  const mutation = useDeleteTweet();
+
+  const handleClick = () => {
+    mutation.mutate(post.id);
+  };
+
+  if (mutation.isPending) return <p>Deleting tweet...</p>;
+
+  if (mutation.error) return <p>Error: {mutation.error.message}</p>;
+
   const postTime = formatDistanceToNow(post.createdAt, {
     addSuffix: true,
     locale: tr,
@@ -22,10 +33,10 @@ function PostItem({ post }) {
             {post.user.account} - {postTime}
           </span>
         </div>
-        <p className="mt-2">lorem ipsum hsdlkjfhkasjhf lkashfadsfdsagf</p>
+        <p className="mt-1">{post.tweet}</p>
         <Analytics data={post.analytics} />
       </div>
-      <i className="fa-solid fa-ellipsis"></i>
+      <i onClick={handleClick} className="fa-solid fa-ellipsis"></i>
     </div>
   );
 }
