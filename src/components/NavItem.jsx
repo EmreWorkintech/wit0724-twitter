@@ -2,8 +2,8 @@
 
 function NavItem({ item }) {
   return (
-    <div className="mb-8 text-3xl flex gap-8">
-      <i className={item.icon}></i>
+    <div className="mb-8 text-xl flex gap-8 items-center">
+      <i className={`${item.icon} text-2xl`}></i>
       {item.title}
     </div>
   );
