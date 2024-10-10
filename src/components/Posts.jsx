@@ -1,20 +1,17 @@
-import { useEffect } from "react";
-import { postData } from "../data";
 import PostItem from "./PostItem";
-import { useDispatch, useSelector } from "react-redux";
-import { setAllPosts } from "../store/actions/postActions";
+import { useGetTweets } from "../services/queries";
+import { convertToTweetModel } from "../utils/utils";
 
 function Posts() {
-  const posts = useSelector((store) => store.posts);
-  const dispatch = useDispatch();
+  const { data, error, isPending } = useGetTweets();
 
-  useEffect(() => {
-    dispatch(setAllPosts(postData));
-  }, []);
+  if (isPending) return <p>loading...</p>;
+
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
-      {posts.map((post) => (
+      {convertToTweetModel(data).map((post) => (
         <PostItem post={post} key={post.id} />
       ))}
     </div>

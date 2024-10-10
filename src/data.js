@@ -38,6 +38,7 @@ export const navItems = [
   },
 ];
 
+//TODO-remove dummy tweet data
 export const postData = [
   {
     id: uuidv4(),
@@ -48,9 +49,9 @@ export const postData = [
       account: "@wit.com.tr",
     },
     analytics: {
-      reTweet: 13,
-      like: 5,
-      comment: 8,
+      reTweet: Math.ceil(Math.random() * 10),
+      like: Math.ceil(Math.random() * 30),
+      comment: Math.ceil(Math.random() * 90),
     },
     replies: [
       {
@@ -82,9 +83,9 @@ export const postData = [
       account: "@wit.com.tr",
     },
     analytics: {
-      reTweet: 13,
-      like: 5,
-      comment: 8,
+      reTweet: Math.ceil(Math.random() * 10),
+      like: Math.ceil(Math.random() * 30),
+      comment: Math.ceil(Math.random() * 90),
     },
     replies: [
       {
@@ -116,9 +117,9 @@ export const postData = [
       account: "@wit.com.tr",
     },
     analytics: {
-      reTweet: 13,
-      like: 5,
-      comment: 8,
+      reTweet: Math.ceil(Math.random() * 10),
+      like: Math.ceil(Math.random() * 30),
+      comment: Math.ceil(Math.random() * 90),
     },
     replies: [
       {
@@ -150,9 +151,9 @@ export const postData = [
       account: "@wit.com.tr",
     },
     analytics: {
-      reTweet: 13,
-      like: 5,
-      comment: 8,
+      reTweet: Math.ceil(Math.random() * 10),
+      like: Math.ceil(Math.random() * 30),
+      comment: Math.ceil(Math.random() * 90),
     },
     replies: [
       {

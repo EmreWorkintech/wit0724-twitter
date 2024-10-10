@@ -12,6 +12,7 @@ export default function UserContextProvider({ children }) {
     setUser({
       username: emailParts[0],
       account: "@" + emailParts[1],
+      token: user.password,
     });
   }
 
