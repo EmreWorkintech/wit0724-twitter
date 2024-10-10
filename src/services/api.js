@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = () => {
-  const { token } = JSON.parse(localStorage.getItem("user"));
+  const user = localStorage.getItem("user");
+  const token = user ? JSON.parse(user).token : null;
 
   return axios.create({
     baseURL: "https://66fce9bac3a184a84d185a08.mockapi.io/api/v1",

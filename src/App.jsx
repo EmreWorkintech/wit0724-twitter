@@ -27,7 +27,7 @@ function App() {
       <div className=" dark:bg-slate-700 dark:text-slate-100">
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/feed" />
+            <Redirect to="/login" />
           </Route>
           <Route path="/login">
             <LoginPage />
